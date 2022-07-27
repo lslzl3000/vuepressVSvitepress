@@ -1,0 +1,3274 @@
+[@dev/core](../README.md) / [Exports](../modules.md) / TransformNode
+
+# Class: TransformNode
+
+A TransformNode is an object that is not rendered but can be used as a center of transformation. This can decrease memory usage and increase rendering speed compared to using an empty mesh as a parent and is less complicated than using a pivot matrix.
+
+**`See`**
+
+https://doc.babylonjs.com/how_to/transformnode
+
+## Hierarchy
+
+- [`Node`](Node.md)
+
+  ↳ **`TransformNode`**
+
+  ↳↳ [`AbstractMesh`](AbstractMesh.md)
+
+## Table of contents
+
+### Constructors
+
+- [constructor](TransformNode.md#constructor)
+
+### Properties
+
+- [\_absolutePosition](TransformNode.md#_absoluteposition)
+- [\_absoluteRotationQuaternion](TransformNode.md#_absoluterotationquaternion)
+- [\_absoluteScaling](TransformNode.md#_absolutescaling)
+- [\_billboardMode](TransformNode.md#_billboardmode)
+- [\_currentParentWhenAttachingToBone](TransformNode.md#_currentparentwhenattachingtobone)
+- [\_forward](TransformNode.md#_forward)
+- [\_infiniteDistance](TransformNode.md#_infinitedistance)
+- [\_isAbsoluteSynced](TransformNode.md#_isabsolutesynced)
+- [\_isDirty](TransformNode.md#_isdirty)
+- [\_isWorldMatrixFrozen](TransformNode.md#_isworldmatrixfrozen)
+- [\_nonUniformScaling](TransformNode.md#_nonuniformscaling)
+- [\_parentNode](TransformNode.md#_parentnode)
+- [\_pivotMatrix](TransformNode.md#_pivotmatrix)
+- [\_pivotMatrixInverse](TransformNode.md#_pivotmatrixinverse)
+- [\_position](TransformNode.md#_position)
+- [\_preserveParentRotationForBillboard](TransformNode.md#_preserveparentrotationforbillboard)
+- [\_ranges](TransformNode.md#_ranges)
+- [\_right](TransformNode.md#_right)
+- [\_rotation](TransformNode.md#_rotation)
+- [\_rotationQuaternion](TransformNode.md#_rotationquaternion)
+- [\_scaling](TransformNode.md#_scaling)
+- [\_transformToBoneReferal](TransformNode.md#_transformtobonereferal)
+- [\_up](TransformNode.md#_up)
+- [\_usePivotMatrix](TransformNode.md#_usepivotmatrix)
+- [animations](TransformNode.md#animations)
+- [id](TransformNode.md#id)
+- [ignoreNonUniformScaling](TransformNode.md#ignorenonuniformscaling)
+- [inspectableCustomProperties](TransformNode.md#inspectablecustomproperties)
+- [metadata](TransformNode.md#metadata)
+- [name](TransformNode.md#name)
+- [onAfterWorldMatrixUpdateObservable](TransformNode.md#onafterworldmatrixupdateobservable)
+- [onDisposeObservable](TransformNode.md#ondisposeobservable)
+- [onReady](TransformNode.md#onready)
+- [reIntegrateRotationIntoRotationQuaternion](TransformNode.md#reintegraterotationintorotationquaternion)
+- [reservedDataStore](TransformNode.md#reserveddatastore)
+- [scalingDeterminant](TransformNode.md#scalingdeterminant)
+- [state](TransformNode.md#state)
+- [uniqueId](TransformNode.md#uniqueid)
+- [BILLBOARDMODE\_ALL](TransformNode.md#billboardmode_all)
+- [BILLBOARDMODE\_NONE](TransformNode.md#billboardmode_none)
+- [BILLBOARDMODE\_USE\_POSITION](TransformNode.md#billboardmode_use_position)
+- [BILLBOARDMODE\_X](TransformNode.md#billboardmode_x)
+- [BILLBOARDMODE\_Y](TransformNode.md#billboardmode_y)
+- [BILLBOARDMODE\_Z](TransformNode.md#billboardmode_z)
+- [\_LookAtVectorCache](TransformNode.md#_lookatvectorcache)
+- [\_RotationAxisCache](TransformNode.md#_rotationaxiscache)
+- [\_TmpRotation](TransformNode.md#_tmprotation)
+- [\_TmpScaling](TransformNode.md#_tmpscaling)
+- [\_TmpTranslation](TransformNode.md#_tmptranslation)
+
+### Accessors
+
+- [absolutePosition](TransformNode.md#absoluteposition)
+- [absoluteRotationQuaternion](TransformNode.md#absoluterotationquaternion)
+- [absoluteScaling](TransformNode.md#absolutescaling)
+- [animationPropertiesOverride](TransformNode.md#animationpropertiesoverride)
+- [behaviors](TransformNode.md#behaviors)
+- [billboardMode](TransformNode.md#billboardmode)
+- [doNotSerialize](TransformNode.md#donotserialize)
+- [forward](TransformNode.md#forward)
+- [infiniteDistance](TransformNode.md#infinitedistance)
+- [isWorldMatrixFrozen](TransformNode.md#isworldmatrixfrozen)
+- [nonUniformScaling](TransformNode.md#nonuniformscaling)
+- [onClonedObservable](TransformNode.md#onclonedobservable)
+- [onDispose](TransformNode.md#ondispose)
+- [onEnabledStateChangedObservable](TransformNode.md#onenabledstatechangedobservable)
+- [parent](TransformNode.md#parent)
+- [position](TransformNode.md#position)
+- [preserveParentRotationForBillboard](TransformNode.md#preserveparentrotationforbillboard)
+- [right](TransformNode.md#right)
+- [rotation](TransformNode.md#rotation)
+- [rotationQuaternion](TransformNode.md#rotationquaternion)
+- [scaling](TransformNode.md#scaling)
+- [up](TransformNode.md#up)
+- [worldMatrixFromCache](TransformNode.md#worldmatrixfromcache)
+
+### Methods
+
+- [\_afterComputeWorldMatrix](TransformNode.md#_aftercomputeworldmatrix)
+- [\_syncAbsoluteScalingAndRotation](TransformNode.md#_syncabsolutescalingandrotation)
+- [addBehavior](TransformNode.md#addbehavior)
+- [addRotation](TransformNode.md#addrotation)
+- [attachToBone](TransformNode.md#attachtobone)
+- [beginAnimation](TransformNode.md#beginanimation)
+- [clone](TransformNode.md#clone)
+- [computeWorldMatrix](TransformNode.md#computeworldmatrix)
+- [createAnimationRange](TransformNode.md#createanimationrange)
+- [deleteAnimationRange](TransformNode.md#deleteanimationrange)
+- [detachFromBone](TransformNode.md#detachfrombone)
+- [dispose](TransformNode.md#dispose)
+- [freezeWorldMatrix](TransformNode.md#freezeworldmatrix)
+- [getAbsolutePivotPoint](TransformNode.md#getabsolutepivotpoint)
+- [getAbsolutePivotPointToRef](TransformNode.md#getabsolutepivotpointtoref)
+- [getAbsolutePosition](TransformNode.md#getabsoluteposition)
+- [getAnimationByName](TransformNode.md#getanimationbyname)
+- [getAnimationRange](TransformNode.md#getanimationrange)
+- [getAnimationRanges](TransformNode.md#getanimationranges)
+- [getBehaviorByName](TransformNode.md#getbehaviorbyname)
+- [getChildMeshes](TransformNode.md#getchildmeshes)
+- [getChildTransformNodes](TransformNode.md#getchildtransformnodes)
+- [getChildren](TransformNode.md#getchildren)
+- [getClassName](TransformNode.md#getclassname)
+- [getDescendants](TransformNode.md#getdescendants)
+- [getDirection](TransformNode.md#getdirection)
+- [getDirectionToRef](TransformNode.md#getdirectiontoref)
+- [getDistanceToCamera](TransformNode.md#getdistancetocamera)
+- [getEngine](TransformNode.md#getengine)
+- [getHierarchyBoundingVectors](TransformNode.md#gethierarchyboundingvectors)
+- [getPivotMatrix](TransformNode.md#getpivotmatrix)
+- [getPivotPoint](TransformNode.md#getpivotpoint)
+- [getPivotPointToRef](TransformNode.md#getpivotpointtoref)
+- [getPoseMatrix](TransformNode.md#getposematrix)
+- [getPositionExpressedInLocalSpace](TransformNode.md#getpositionexpressedinlocalspace)
+- [getPositionInCameraSpace](TransformNode.md#getpositionincameraspace)
+- [getScene](TransformNode.md#getscene)
+- [getWorldMatrix](TransformNode.md#getworldmatrix)
+- [instantiateHierarchy](TransformNode.md#instantiatehierarchy)
+- [isDescendantOf](TransformNode.md#isdescendantof)
+- [isDisposed](TransformNode.md#isdisposed)
+- [isEnabled](TransformNode.md#isenabled)
+- [isReady](TransformNode.md#isready)
+- [isUsingPivotMatrix](TransformNode.md#isusingpivotmatrix)
+- [locallyTranslate](TransformNode.md#locallytranslate)
+- [lookAt](TransformNode.md#lookat)
+- [markAsDirty](TransformNode.md#markasdirty)
+- [normalizeToUnitCube](TransformNode.md#normalizetounitcube)
+- [registerAfterWorldMatrixUpdate](TransformNode.md#registerafterworldmatrixupdate)
+- [removeBehavior](TransformNode.md#removebehavior)
+- [resetLocalMatrix](TransformNode.md#resetlocalmatrix)
+- [rotate](TransformNode.md#rotate)
+- [rotateAround](TransformNode.md#rotatearound)
+- [serialize](TransformNode.md#serialize)
+- [serializeAnimationRanges](TransformNode.md#serializeanimationranges)
+- [setAbsolutePosition](TransformNode.md#setabsoluteposition)
+- [setDirection](TransformNode.md#setdirection)
+- [setEnabled](TransformNode.md#setenabled)
+- [setParent](TransformNode.md#setparent)
+- [setPivotMatrix](TransformNode.md#setpivotmatrix)
+- [setPivotPoint](TransformNode.md#setpivotpoint)
+- [setPositionWithLocalVector](TransformNode.md#setpositionwithlocalvector)
+- [setPreTransformMatrix](TransformNode.md#setpretransformmatrix)
+- [translate](TransformNode.md#translate)
+- [unfreezeWorldMatrix](TransformNode.md#unfreezeworldmatrix)
+- [unregisterAfterWorldMatrixUpdate](TransformNode.md#unregisterafterworldmatrixupdate)
+- [updatePoseMatrix](TransformNode.md#updateposematrix)
+- [AddNodeConstructor](TransformNode.md#addnodeconstructor)
+- [Construct](TransformNode.md#construct)
+- [Parse](TransformNode.md#parse)
+- [ParseAnimationRanges](TransformNode.md#parseanimationranges)
+
+## Constructors
+
+### constructor
+
+• **new TransformNode**(`name`, `scene?`, `isPure?`)
+
+#### Parameters
+
+| Name | Type | Default value |
+| :------ | :------ | :------ |
+| `name` | `string` | `undefined` |
+| `scene` | [`Nullable`](../modules.md#nullable)[`Scene`](Scene.md) | `null` |
+| `isPure` | `boolean` | `true` |
+
+#### Overrides
+
+[Node](Node.md).[constructor](Node.md#constructor)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:171
+
+## Properties
+
+### \_absolutePosition
+
+• `Private` **\_absolutePosition**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:153
+
+___
+
+### \_absoluteRotationQuaternion
+
+• `Private` **\_absoluteRotationQuaternion**: [`Quaternion`](Quaternion.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:155
+
+___
+
+### \_absoluteScaling
+
+• `Private` **\_absoluteScaling**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:154
+
+___
+
+### \_billboardMode
+
+• `Private` **\_billboardMode**: `number` = `TransformNode.BILLBOARDMODE_NONE`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:68
+
+___
+
+### \_currentParentWhenAttachingToBone
+
+• `Private` **\_currentParentWhenAttachingToBone**: [`Nullable`](../modules.md#nullable)[`Node`](Node.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:64
+
+___
+
+### \_forward
+
+• `Private` **\_forward**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:47
+
+___
+
+### \_infiniteDistance
+
+• `Private` **\_infiniteDistance**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:116
+
+___
+
+### \_isAbsoluteSynced
+
+• `Private` **\_isAbsoluteSynced**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:65
+
+___
+
+### \_isDirty
+
+• `Protected` **\_isDirty**: `boolean` = `false`
+
+#### Inherited from
+
+[Node](Node.md).[_isDirty](Node.md#_isdirty)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:43
+
+___
+
+### \_isWorldMatrixFrozen
+
+• `Protected` **\_isWorldMatrixFrozen**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:161
+
+___
+
+### \_nonUniformScaling
+
+• `Private` **\_nonUniformScaling**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:795
+
+___
+
+### \_parentNode
+
+• `Protected` **\_parentNode**: [`Nullable`](../modules.md#nullable)[`Node`](Node.md) = `null`
+
+#### Inherited from
+
+[Node](Node.md).[_parentNode](Node.md#_parentnode)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:176
+
+___
+
+### \_pivotMatrix
+
+• `Private` **\_pivotMatrix**: [`Matrix`](Matrix.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:156
+
+___
+
+### \_pivotMatrixInverse
+
+• `Private` **\_pivotMatrixInverse**: [`Matrix`](Matrix.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:157
+
+___
+
+### \_position
+
+• `Private` **\_position**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:53
+
+___
+
+### \_preserveParentRotationForBillboard
+
+• `Private` **\_preserveParentRotationForBillboard**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:93
+
+___
+
+### \_ranges
+
+• `Protected` **\_ranges**: `Object` = `{}`
+
+#### Index signature
+
+▪ [name: `string`]: [`Nullable`](../modules.md#nullable)`AnimationRange`
+
+#### Inherited from
+
+[Node](Node.md).[_ranges](Node.md#_ranges)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:154
+
+___
+
+### \_right
+
+• `Private` **\_right**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:49
+
+___
+
+### \_rotation
+
+• `Private` **\_rotation**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:56
+
+___
+
+### \_rotationQuaternion
+
+• `Private` **\_rotationQuaternion**: [`Nullable`](../modules.md#nullable)[`Quaternion`](Quaternion.md) = `null`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:59
+
+___
+
+### \_scaling
+
+• `Protected` **\_scaling**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:62
+
+___
+
+### \_transformToBoneReferal
+
+• `Private` **\_transformToBoneReferal**: [`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md) = `null`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:63
+
+___
+
+### \_up
+
+• `Private` **\_up**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:48
+
+___
+
+### \_usePivotMatrix
+
+• `Private` **\_usePivotMatrix**: `boolean` = `false`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:152
+
+___
+
+### animations
+
+• **animations**: [`Animation`](Animation.md)[]
+
+Gets a list of Animations associated with the node
+
+#### Inherited from
+
+[Node](Node.md).[animations](Node.md#animations)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:153
+
+___
+
+### id
+
+• **id**: `string`
+
+Gets or sets the id of the node
+
+#### Inherited from
+
+[Node](Node.md).[id](Node.md#id)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:97
+
+___
+
+### ignoreNonUniformScaling
+
+• **ignoreNonUniformScaling**: `boolean` = `false`
+
+Gets or sets a boolean indicating that non uniform scaling (when at least one component is different from others) should be ignored.
+By default the system will update normals to compensate
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:138
+
+___
+
+### inspectableCustomProperties
+
+• **inspectableCustomProperties**: [`IInspectable`](../interfaces/IInspectable.md)[]
+
+List of inspectable custom properties (used by the Inspector)
+
+**`See`**
+
+https://doc.babylonjs.com/how_to/debug_layer#extensibility
+
+#### Inherited from
+
+[Node](Node.md).[inspectableCustomProperties](Node.md#inspectablecustomproperties)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:126
+
+___
+
+### metadata
+
+• **metadata**: `any` = `null`
+
+Gets or sets an object used to store user defined information for the node
+
+#### Inherited from
+
+[Node](Node.md).[metadata](Node.md#metadata)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:115
+
+___
+
+### name
+
+• **name**: `string`
+
+Gets or sets the name of the node
+
+#### Inherited from
+
+[Node](Node.md).[name](Node.md#name)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:91
+
+___
+
+### onAfterWorldMatrixUpdateObservable
+
+• **onAfterWorldMatrixUpdateObservable**: [`Observable`](Observable.md)[`TransformNode`](TransformNode.md)
+
+An event triggered after the world matrix is updated
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:169
+
+___
+
+### onDisposeObservable
+
+• **onDisposeObservable**: [`Observable`](Observable.md)[`Node`](Node.md)
+
+An event triggered when the mesh is disposed
+
+#### Inherited from
+
+[Node](Node.md).[onDisposeObservable](Node.md#ondisposeobservable)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:300
+
+___
+
+### onReady
+
+• **onReady**: [`Nullable`](../modules.md#nullable)(`node`: [`Node`](Node.md)) => `void` = `null`
+
+Callback raised when the node is ready to be used
+
+#### Inherited from
+
+[Node](Node.md).[onReady](Node.md#onready)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:159
+
+___
+
+### reIntegrateRotationIntoRotationQuaternion
+
+• **reIntegrateRotationIntoRotationQuaternion**: `boolean` = `false`
+
+Gets or sets a boolean indicating that even if rotationQuaternion is defined, you can keep updating rotation property and Babylon.js will just mix both
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:144
+
+___
+
+### reservedDataStore
+
+• **reservedDataStore**: `any` = `null`
+
+For internal use only. Please do not use.
+
+#### Inherited from
+
+[Node](Node.md).[reservedDataStore](Node.md#reserveddatastore)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:120
+
+___
+
+### scalingDeterminant
+
+• **scalingDeterminant**: `number` = `1`
+
+Multiplication factor on scale x/y/z when computing the world matrix. Eg. for a 1x1x1 cube setting this to 2 will make it a 2x2x2 cube
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:113
+
+___
+
+### state
+
+• **state**: `string` = `""`
+
+Gets or sets a string used to store user defined state for the node
+
+#### Inherited from
+
+[Node](Node.md).[state](Node.md#state)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:109
+
+___
+
+### uniqueId
+
+• **uniqueId**: `number`
+
+Gets or sets the unique id of the node
+
+#### Inherited from
+
+[Node](Node.md).[uniqueId](Node.md#uniqueid)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:103
+
+___
+
+### BILLBOARDMODE\_ALL
+
+▪ `Static` **BILLBOARDMODE\_ALL**: `number` = `7`
+
+Object will rotate to face the camera
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:37
+
+___
+
+### BILLBOARDMODE\_NONE
+
+▪ `Static` **BILLBOARDMODE\_NONE**: `number` = `0`
+
+Object will not rotate to face the camera
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:21
+
+___
+
+### BILLBOARDMODE\_USE\_POSITION
+
+▪ `Static` **BILLBOARDMODE\_USE\_POSITION**: `number` = `128`
+
+Object will rotate to face the camera's position instead of orientation
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:41
+
+___
+
+### BILLBOARDMODE\_X
+
+▪ `Static` **BILLBOARDMODE\_X**: `number` = `1`
+
+Object will rotate to face the camera but only on the x axis
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:25
+
+___
+
+### BILLBOARDMODE\_Y
+
+▪ `Static` **BILLBOARDMODE\_Y**: `number` = `2`
+
+Object will rotate to face the camera but only on the y axis
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:29
+
+___
+
+### BILLBOARDMODE\_Z
+
+▪ `Static` **BILLBOARDMODE\_Z**: `number` = `4`
+
+Object will rotate to face the camera but only on the z axis
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:33
+
+___
+
+### \_LookAtVectorCache
+
+▪ `Static` `Private` **\_LookAtVectorCache**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:560
+
+___
+
+### \_RotationAxisCache
+
+▪ `Static` `Private` **\_RotationAxisCache**: [`Quaternion`](Quaternion.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:860
+
+___
+
+### \_TmpRotation
+
+▪ `Static` `Private` **\_TmpRotation**: [`Quaternion`](Quaternion.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:43
+
+___
+
+### \_TmpScaling
+
+▪ `Static` `Private` **\_TmpScaling**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:44
+
+___
+
+### \_TmpTranslation
+
+▪ `Static` `Private` **\_TmpTranslation**: [`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:45
+
+## Accessors
+
+### absolutePosition
+
+• `get` **absolutePosition**(): [`Vector3`](Vector3.md)
+
+Returns the current mesh absolute position.
+Returns a Vector3.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:344
+
+___
+
+### absoluteRotationQuaternion
+
+• `get` **absoluteRotationQuaternion**(): [`Quaternion`](Quaternion.md)
+
+Returns the current mesh absolute rotation.
+Returns a Quaternion.
+
+#### Returns
+
+[`Quaternion`](Quaternion.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:361
+
+___
+
+### absoluteScaling
+
+• `get` **absoluteScaling**(): [`Vector3`](Vector3.md)
+
+Returns the current mesh absolute scaling.
+Returns a Vector3.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:352
+
+___
+
+### animationPropertiesOverride
+
+• `get` **animationPropertiesOverride**(): [`Nullable`](../modules.md#nullable)[`AnimationPropertiesOverride`](AnimationPropertiesOverride.md)
+
+Gets or sets the animation properties override
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`AnimationPropertiesOverride`](AnimationPropertiesOverride.md)
+
+#### Inherited from
+
+Node.animationPropertiesOverride
+
+#### Defined in
+
+packages/dev/core/src/node.ts:275
+
+• `set` **animationPropertiesOverride**(`value`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | [`Nullable`](../modules.md#nullable)[`AnimationPropertiesOverride`](AnimationPropertiesOverride.md) |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Node.animationPropertiesOverride
+
+#### Defined in
+
+packages/dev/core/src/node.ts:282
+
+___
+
+### behaviors
+
+• `get` **behaviors**(): [`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md)[]
+
+Gets the list of attached behaviors
+
+**`See`**
+
+https://doc.babylonjs.com/features/behaviour
+
+#### Returns
+
+[`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md)[]
+
+#### Inherited from
+
+Node.behaviors
+
+#### Defined in
+
+packages/dev/core/src/node.ts:410
+
+___
+
+### billboardMode
+
+• `get` **billboardMode**(): `number`
+
+Gets or sets the billboard mode. Default is 0.
+
+| Value | Type | Description |
+| --- | --- | --- |
+| 0 | BILLBOARDMODE_NONE |  |
+| 1 | BILLBOARDMODE_X |  |
+| 2 | BILLBOARDMODE_Y |  |
+| 4 | BILLBOARDMODE_Z |  |
+| 7 | BILLBOARDMODE_ALL |  |
+
+#### Returns
+
+`number`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:82
+
+• `set` **billboardMode**(`value`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `number` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:86
+
+___
+
+### doNotSerialize
+
+• `get` **doNotSerialize**(): `boolean`
+
+Gets or sets a boolean used to define if the node must be serialized
+
+#### Returns
+
+`boolean`
+
+#### Inherited from
+
+Node.doNotSerialize
+
+#### Defined in
+
+packages/dev/core/src/node.ts:131
+
+• `set` **doNotSerialize**(`value`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `boolean` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Node.doNotSerialize
+
+#### Defined in
+
+packages/dev/core/src/node.ts:143
+
+___
+
+### forward
+
+• `get` **forward**(): [`Vector3`](Vector3.md)
+
+The forward direction of that transform in world space.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:253
+
+___
+
+### infiniteDistance
+
+• `get` **infiniteDistance**(): `boolean`
+
+Gets or sets the distance of the object to max, often used by skybox
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:121
+
+• `set` **infiniteDistance**(`value`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `boolean` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:125
+
+___
+
+### isWorldMatrixFrozen
+
+• `get` **isWorldMatrixFrozen**(): `boolean`
+
+True if the World matrix has been frozen.
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:476
+
+___
+
+### nonUniformScaling
+
+• `get` **nonUniformScaling**(): `boolean`
+
+True if the scaling property of this object is non uniform eg. (1,2,1)
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:799
+
+___
+
+### onClonedObservable
+
+• `get` **onClonedObservable**(): [`Observable`](Observable.md)[`Node`](Node.md)
+
+An event triggered when the node is cloned
+
+#### Returns
+
+[`Observable`](Observable.md)[`Node`](Node.md)
+
+#### Inherited from
+
+Node.onClonedObservable
+
+#### Defined in
+
+packages/dev/core/src/node.ts:323
+
+___
+
+### onDispose
+
+• `set` **onDispose**(`callback`): `void`
+
+Sets a callback that will be raised when the node will be disposed
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `callback` | () => `void` |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Node.onDispose
+
+#### Defined in
+
+packages/dev/core/src/node.ts:306
+
+___
+
+### onEnabledStateChangedObservable
+
+• `get` **onEnabledStateChangedObservable**(): [`Observable`](Observable.md)`boolean`
+
+An event triggered when the enabled state of the node changes
+
+#### Returns
+
+[`Observable`](Observable.md)`boolean`
+
+#### Inherited from
+
+Node.onEnabledStateChangedObservable
+
+#### Defined in
+
+packages/dev/core/src/node.ts:316
+
+___
+
+### parent
+
+• `get` **parent**(): [`Nullable`](../modules.md#nullable)[`Node`](Node.md)
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`Node`](Node.md)
+
+#### Inherited from
+
+Node.parent
+
+#### Defined in
+
+packages/dev/core/src/node.ts:238
+
+• `set` **parent**(`parent`): `void`
+
+Gets or sets the parent of the node (without keeping the current position in the scene)
+
+**`See`**
+
+https://doc.babylonjs.com/how_to/parenting
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `parent` | [`Nullable`](../modules.md#nullable)[`Node`](Node.md) |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+Node.parent
+
+#### Defined in
+
+packages/dev/core/src/node.ts:200
+
+___
+
+### position
+
+• `get` **position**(): [`Vector3`](Vector3.md)
+
+Gets or set the node position (default is (0.0, 0.0, 0.0))
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:190
+
+• `set` **position**(`newPosition`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `newPosition` | [`Vector3`](Vector3.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:194
+
+___
+
+### preserveParentRotationForBillboard
+
+• `get` **preserveParentRotationForBillboard**(): `boolean`
+
+Gets or sets a boolean indicating that parent rotation should be preserved when using billboards.
+This could be useful for glTF objects where parent rotation helps converting from right handed to left handed
+
+#### Returns
+
+`boolean`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:98
+
+• `set` **preserveParentRotationForBillboard**(`value`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `value` | `boolean` |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:102
+
+___
+
+### right
+
+• `get` **right**(): [`Vector3`](Vector3.md)
+
+The right direction of that transform in world space.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:269
+
+___
+
+### rotation
+
+• `get` **rotation**(): [`Vector3`](Vector3.md)
+
+Gets or sets the rotation property : a Vector3 defining the rotation value in radians around each local axis X, Y, Z  (default is (0.0, 0.0, 0.0)).
+If rotation quaternion is set, this Vector3 will be ignored and copy from the quaternion
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:211
+
+• `set` **rotation**(`newRotation`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `newRotation` | [`Vector3`](Vector3.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:215
+
+___
+
+### rotationQuaternion
+
+• `get` **rotationQuaternion**(): [`Nullable`](../modules.md#nullable)[`Quaternion`](Quaternion.md)
+
+Gets or sets the rotation Quaternion property : this a Quaternion object defining the node rotation by using a unit quaternion (undefined by default, but can be null).
+If set, only the rotationQuaternion is then used to compute the node rotation (ie. node.rotation will be ignored)
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`Quaternion`](Quaternion.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:237
+
+• `set` **rotationQuaternion**(`quaternion`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `quaternion` | [`Nullable`](../modules.md#nullable)[`Quaternion`](Quaternion.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:241
+
+___
+
+### scaling
+
+• `get` **scaling**(): [`Vector3`](Vector3.md)
+
+Gets or sets the scaling property : a Vector3 defining the node scaling along each local axis X, Y, Z (default is (1.0, 1.0, 1.0)).
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:224
+
+• `set` **scaling**(`newScaling`): `void`
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `newScaling` | [`Vector3`](Vector3.md) |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:228
+
+___
+
+### up
+
+• `get` **up**(): [`Vector3`](Vector3.md)
+
+The up direction of that transform in world space.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:261
+
+___
+
+### worldMatrixFromCache
+
+• `get` **worldMatrixFromCache**(): [`Matrix`](Matrix.md)
+
+Returns directly the latest state of the mesh World matrix.
+A Matrix is returned.
+
+#### Returns
+
+[`Matrix`](Matrix.md)
+
+#### Inherited from
+
+Node.worldMatrixFromCache
+
+#### Defined in
+
+packages/dev/core/src/node.ts:454
+
+## Methods
+
+### \_afterComputeWorldMatrix
+
+▸ `Protected` **_afterComputeWorldMatrix**(): `void`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1275
+
+___
+
+### \_syncAbsoluteScalingAndRotation
+
+▸ `Private` **_syncAbsoluteScalingAndRotation**(): `void`
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1499
+
+___
+
+### addBehavior
+
+▸ **addBehavior**(`behavior`, `attachImmediately?`): [`Node`](Node.md)
+
+Attach a behavior to the node
+
+**`See`**
+
+https://doc.babylonjs.com/features/behaviour
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `behavior` | [`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md) | `undefined` | defines the behavior to attach |
+| `attachImmediately` | `boolean` | `false` | defines that the behavior must be attached even if the scene is still loading |
+
+#### Returns
+
+[`Node`](Node.md)
+
+the current Node
+
+#### Inherited from
+
+[Node](Node.md).[addBehavior](Node.md#addbehavior)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:366
+
+___
+
+### addRotation
+
+▸ **addRotation**(`x`, `y`, `z`): [`TransformNode`](TransformNode.md)
+
+Adds a rotation step to the mesh current rotation.
+x, y, z are Euler angles expressed in radians.
+This methods updates the current mesh rotation, either mesh.rotation, either mesh.rotationQuaternion if it's set.
+This means this rotation is made in the mesh local space only.
+It's useful to set a custom rotation order different from the BJS standard one YXZ.
+Example : this rotates the mesh first around its local X axis, then around its local Z axis, finally around its local Y axis.
+```javascript
+mesh.addRotation(x1, 0, 0).addRotation(0, 0, z2).addRotation(0, 0, y3);
+```
+Note that `addRotation()` accumulates the passed rotation values to the current ones and computes the .rotation or .rotationQuaternion updated values.
+Under the hood, only quaternions are used. So it's a little faster is you use .rotationQuaternion because it doesn't need to translate them back to Euler angles.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `x` | `number` | Rotation to add |
+| `y` | `number` | Rotation to add |
+| `z` | `number` | Rotation to add |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:973
+
+___
+
+### attachToBone
+
+▸ **attachToBone**(`bone`, `affectedTransformNode`): [`TransformNode`](TransformNode.md)
+
+Attach the current TransformNode to another TransformNode associated with a bone
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `bone` | [`Bone`](Bone.md) | Bone affecting the TransformNode |
+| `affectedTransformNode` | [`TransformNode`](TransformNode.md) | TransformNode associated with the bone |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this object
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:822
+
+___
+
+### beginAnimation
+
+▸ **beginAnimation**(`name`, `loop?`, `speedRatio?`, `onAnimationEnd?`): [`Nullable`](../modules.md#nullable)[`Animatable`](Animatable.md)
+
+Will start the animation sequence
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | defines the range frames for animation sequence |
+| `loop?` | `boolean` | defines if the animation should loop (false by default) |
+| `speedRatio?` | `number` | defines the speed factor in which to run the animation (1 by default) |
+| `onAnimationEnd?` | () => `void` | defines a function to be executed when the animation ended (undefined by default) |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`Animatable`](Animatable.md)
+
+the object created for this animation. If range does not exist, it will return null
+
+#### Inherited from
+
+[Node](Node.md).[beginAnimation](Node.md#beginanimation)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:833
+
+___
+
+### clone
+
+▸ **clone**(`name`, `newParent`, `doNotCloneChildren?`): [`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md)
+
+Clone the current transform node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | Name of the new clone |
+| `newParent` | [`Nullable`](../modules.md#nullable)[`Node`](Node.md) | New parent for the clone |
+| `doNotCloneChildren?` | `boolean` | Do not clone children hierarchy |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md)
+
+the new transform node
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1330
+
+___
+
+### computeWorldMatrix
+
+▸ **computeWorldMatrix**(`force?`): [`Matrix`](Matrix.md)
+
+Computes the world matrix of the node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `force?` | `boolean` | defines if the cache version should be invalidated forcing the world matrix to be created from scratch |
+
+#### Returns
+
+[`Matrix`](Matrix.md)
+
+the world matrix
+
+#### Overrides
+
+[Node](Node.md).[computeWorldMatrix](Node.md#computeworldmatrix)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1002
+
+___
+
+### createAnimationRange
+
+▸ **createAnimationRange**(`name`, `from`, `to`): `void`
+
+Creates an animation range for this node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | defines the name of the range |
+| `from` | `number` | defines the starting key |
+| `to` | `number` | defines the end key |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Node](Node.md).[createAnimationRange](Node.md#createanimationrange)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:777
+
+___
+
+### deleteAnimationRange
+
+▸ **deleteAnimationRange**(`name`, `deleteFrames?`): `void`
+
+Delete a specific animation range
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `name` | `string` | `undefined` | defines the name of the range to delete |
+| `deleteFrames` | `boolean` | `true` | defines if animation frames from the range must be deleted as well |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Node](Node.md).[deleteAnimationRange](Node.md#deleteanimationrange)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:794
+
+___
+
+### detachFromBone
+
+▸ **detachFromBone**(`resetToPreviousParent?`): [`TransformNode`](TransformNode.md)
+
+Detach the transform node if its associated with a bone
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `resetToPreviousParent` | `boolean` | `false` | Indicates if the parent that was in effect when attachToBone was called should be set back or if we should set parent to null instead (defaults to the latter) |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this object
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:840
+
+___
+
+### dispose
+
+▸ **dispose**(`doNotRecurse?`, `disposeMaterialAndTextures?`): `void`
+
+Releases resources associated with this transform node.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `doNotRecurse?` | `boolean` | `undefined` | Set to true to not recurse into each children (recurse into each children by default) |
+| `disposeMaterialAndTextures` | `boolean` | `false` | Set to true to also dispose referenced materials and textures (false by default) |
+
+#### Returns
+
+`void`
+
+#### Overrides
+
+[Node](Node.md).[dispose](Node.md#dispose)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1427
+
+___
+
+### freezeWorldMatrix
+
+▸ **freezeWorldMatrix**(`newWorldMatrix?`, `decompose?`): [`TransformNode`](TransformNode.md)
+
+Prevents the World matrix to be computed any longer
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `newWorldMatrix` | [`Nullable`](../modules.md#nullable)[`Matrix`](Matrix.md) | `null` | defines an optional matrix to use as world matrix |
+| `decompose` | `boolean` | `false` | defines whether to decompose the given newWorldMatrix or directly assign |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:442
+
+___
+
+### getAbsolutePivotPoint
+
+▸ **getAbsolutePivotPoint**(): [`Vector3`](Vector3.md)
+
+Returns a new Vector3 set with the mesh pivot point World coordinates.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+a new Vector3 set with the mesh pivot point World coordinates.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:707
+
+___
+
+### getAbsolutePivotPointToRef
+
+▸ **getAbsolutePivotPointToRef**(`result`): [`TransformNode`](TransformNode.md)
+
+Sets the Vector3 "result" coordinates with the mesh pivot point World coordinates.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `result` | [`Vector3`](Vector3.md) | vector3 to store the result |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:718
+
+___
+
+### getAbsolutePosition
+
+▸ **getAbsolutePosition**(): [`Vector3`](Vector3.md)
+
+Returns the mesh absolute position in the World.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+a Vector3.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:484
+
+___
+
+### getAnimationByName
+
+▸ **getAnimationByName**(`name`): [`Nullable`](../modules.md#nullable)[`Animation`](Animation.md)
+
+Get an animation by name
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | defines the name of the animation to look for |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`Animation`](Animation.md)
+
+null if not found else the requested animation
+
+#### Inherited from
+
+[Node](Node.md).[getAnimationByName](Node.md#getanimationbyname)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:759
+
+___
+
+### getAnimationRange
+
+▸ **getAnimationRange**(`name`): [`Nullable`](../modules.md#nullable)[`AnimationRange`](AnimationRange.md)
+
+Get an animation range by name
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | defines the name of the animation range to look for |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`AnimationRange`](AnimationRange.md)
+
+null if not found else the requested animation range
+
+#### Inherited from
+
+[Node](Node.md).[getAnimationRange](Node.md#getanimationrange)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:808
+
+___
+
+### getAnimationRanges
+
+▸ **getAnimationRanges**(): [`Nullable`](../modules.md#nullable)[`AnimationRange`](AnimationRange.md)[]
+
+Gets the list of all animation ranges defined on this node
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`AnimationRange`](AnimationRange.md)[]
+
+an array
+
+#### Inherited from
+
+[Node](Node.md).[getAnimationRanges](Node.md#getanimationranges)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:816
+
+___
+
+### getBehaviorByName
+
+▸ **getBehaviorByName**(`name`): [`Nullable`](../modules.md#nullable)[`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md)
+
+Gets an attached behavior by name
+
+**`See`**
+
+https://doc.babylonjs.com/features/behaviour
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `name` | `string` | defines the name of the behavior to look for |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md)
+
+null if behavior was not found else the requested behavior
+
+#### Inherited from
+
+[Node](Node.md).[getBehaviorByName](Node.md#getbehaviorbyname)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:420
+
+___
+
+### getChildMeshes
+
+▸ **getChildMeshes**`T`(`directDescendantsOnly?`, `predicate?`): `T`[]
+
+Get all child-meshes of this node
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`AbstractMesh`](AbstractMesh.md)`T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered (Default: false) |
+| `predicate?` | (`node`: [`Node`](Node.md)) => node is T | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+
+#### Returns
+
+`T`[]
+
+an array of AbstractMesh
+
+#### Inherited from
+
+[Node](Node.md).[getChildMeshes](Node.md#getchildmeshes)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:684
+
+▸ **getChildMeshes**(`directDescendantsOnly?`, `predicate?`): [`AbstractMesh`](AbstractMesh.md)[]
+
+Get all child-meshes of this node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered (Default: false) |
+| `predicate?` | (`node`: [`Node`](Node.md)) => `boolean` | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+
+#### Returns
+
+[`AbstractMesh`](AbstractMesh.md)[]
+
+an array of AbstractMesh
+
+#### Inherited from
+
+[Node](Node.md).[getChildMeshes](Node.md#getchildmeshes)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:692
+
+___
+
+### getChildTransformNodes
+
+▸ **getChildTransformNodes**(`directDescendantsOnly?`, `predicate?`): [`TransformNode`](TransformNode.md)[]
+
+Get all child-transformNodes of this node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered |
+| `predicate?` | (`node`: [`Node`](Node.md)) => `boolean` | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)[]
+
+an array of TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1414
+
+___
+
+### getChildren
+
+▸ **getChildren**`T`(`predicate?`, `directDescendantsOnly?`): `T`[]
+
+Get all direct children of this node
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Node`](Node.md)`T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `predicate?` | (`node`: [`Node`](Node.md)) => node is T | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered (Default: true) |
+
+#### Returns
+
+`T`[]
+
+an array of Node
+
+#### Inherited from
+
+[Node](Node.md).[getChildren](Node.md#getchildren)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:714
+
+▸ **getChildren**(`predicate?`, `directDescendantsOnly?`): [`Node`](Node.md)[]
+
+Get all direct children of this node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `predicate?` | (`node`: [`Node`](Node.md)) => `boolean` | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered (Default: true) |
+
+#### Returns
+
+[`Node`](Node.md)[]
+
+an array of Node
+
+#### Inherited from
+
+[Node](Node.md).[getChildren](Node.md#getchildren)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:722
+
+___
+
+### getClassName
+
+▸ **getClassName**(): `string`
+
+Gets a string identifying the name of the class
+
+#### Returns
+
+`string`
+
+"TransformNode" string
+
+#### Overrides
+
+[Node](Node.md).[getClassName](Node.md#getclassname)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:183
+
+___
+
+### getDescendants
+
+▸ **getDescendants**`T`(`directDescendantsOnly?`, `predicate?`): `T`[]
+
+Will return all nodes that have this node as ascendant
+
+#### Type parameters
+
+| Name | Type |
+| :------ | :------ |
+| `T` | extends [`Node`](Node.md)`T` |
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered |
+| `predicate?` | (`node`: [`Node`](Node.md)) => node is T | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+
+#### Returns
+
+`T`[]
+
+all children nodes of all types
+
+#### Inherited from
+
+[Node](Node.md).[getDescendants](Node.md#getdescendants)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:654
+
+▸ **getDescendants**(`directDescendantsOnly?`, `predicate?`): [`Node`](Node.md)[]
+
+Will return all nodes that have this node as ascendant
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `directDescendantsOnly?` | `boolean` | defines if true only direct descendants of 'this' will be considered, if false direct and also indirect (children of children, an so on in a recursive manner) descendants of 'this' will be considered |
+| `predicate?` | (`node`: [`Node`](Node.md)) => `boolean` | defines an optional predicate that will be called on every evaluated child, the predicate must return true for a given child to be part of the result, otherwise it will be ignored |
+
+#### Returns
+
+[`Node`](Node.md)[]
+
+all children nodes of all types
+
+#### Inherited from
+
+[Node](Node.md).[getDescendants](Node.md#getdescendants)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:662
+
+___
+
+### getDirection
+
+▸ **getDirection**(`localAxis`): [`Vector3`](Vector3.md)
+
+Returns a new Vector3 that is the localAxis, expressed in the mesh local space, rotated like the mesh.
+This Vector3 is expressed in the World space.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `localAxis` | [`Vector3`](Vector3.md) | axis to rotate |
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+a new Vector3 that is the localAxis, expressed in the mesh local space, rotated like the mesh.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:616
+
+___
+
+### getDirectionToRef
+
+▸ **getDirectionToRef**(`localAxis`, `result`): [`TransformNode`](TransformNode.md)
+
+Sets the Vector3 "result" as the rotated Vector3 "localAxis" in the same rotation than the mesh.
+localAxis is expressed in the mesh local space.
+result is computed in the World space from the mesh World matrix.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `localAxis` | [`Vector3`](Vector3.md) | axis to rotate |
+| `result` | [`Vector3`](Vector3.md) | the resulting transformnode |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:632
+
+___
+
+### getDistanceToCamera
+
+▸ **getDistanceToCamera**(`camera?`): `number`
+
+Returns the distance from the mesh to the active camera
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `camera` | [`Nullable`](../modules.md#nullable)[`Camera`](Camera.md) | `null` | defines the camera to use |
+
+#### Returns
+
+`number`
+
+the distance
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1316
+
+___
+
+### getEngine
+
+▸ **getEngine**(): [`Engine`](Engine.md)
+
+Gets the engine of the node
+
+#### Returns
+
+[`Engine`](Engine.md)
+
+a Engine
+
+#### Inherited from
+
+[Node](Node.md).[getEngine](Node.md#getengine)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:352
+
+___
+
+### getHierarchyBoundingVectors
+
+▸ **getHierarchyBoundingVectors**(`includeDescendants?`, `predicate?`): `Object`
+
+Return the minimum and maximum world vectors of the entire hierarchy under current node
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `includeDescendants` | `boolean` | `true` | Include bounding info from descendants as well (true by default) |
+| `predicate` | [`Nullable`](../modules.md#nullable)(`abstractMesh`: [`AbstractMesh`](AbstractMesh.md)) => `boolean` | `null` | defines a callback function that can be customize to filter what meshes should be included in the list used to compute the bounding vectors |
+
+#### Returns
+
+`Object`
+
+the new bounding vectors
+
+| Name | Type |
+| :------ | :------ |
+| `max` | [`Vector3`](Vector3.md) |
+| `min` | [`Vector3`](Vector3.md) |
+
+#### Inherited from
+
+[Node](Node.md).[getHierarchyBoundingVectors](Node.md#gethierarchyboundingvectors)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:933
+
+___
+
+### getPivotMatrix
+
+▸ **getPivotMatrix**(): [`Matrix`](Matrix.md)
+
+Returns the mesh pivot matrix.
+Default : Identity.
+
+#### Returns
+
+[`Matrix`](Matrix.md)
+
+the matrix
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:404
+
+___
+
+### getPivotPoint
+
+▸ **getPivotPoint**(): [`Vector3`](Vector3.md)
+
+Returns a new Vector3 set with the mesh pivot point coordinates in the local space.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+the pivot point
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:685
+
+___
+
+### getPivotPointToRef
+
+▸ **getPivotPointToRef**(`result`): [`TransformNode`](TransformNode.md)
+
+Sets the passed Vector3 "result" with the coordinates of the mesh pivot point in the local space.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `result` | [`Vector3`](Vector3.md) | the vector3 to store the result |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:696
+
+___
+
+### getPoseMatrix
+
+▸ **getPoseMatrix**(): [`Matrix`](Matrix.md)
+
+Returns the mesh Pose matrix.
+
+#### Returns
+
+[`Matrix`](Matrix.md)
+
+the pose matrix
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:292
+
+___
+
+### getPositionExpressedInLocalSpace
+
+▸ **getPositionExpressedInLocalSpace**(): [`Vector3`](Vector3.md)
+
+Returns the mesh position in the local space from the current World matrix values.
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+a new Vector3.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:542
+
+___
+
+### getPositionInCameraSpace
+
+▸ **getPositionInCameraSpace**(`camera?`): [`Vector3`](Vector3.md)
+
+Gets the position of the current mesh in camera space
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `camera` | [`Nullable`](../modules.md#nullable)[`Camera`](Camera.md) | `null` | defines the camera to use |
+
+#### Returns
+
+[`Vector3`](Vector3.md)
+
+a position
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1303
+
+___
+
+### getScene
+
+▸ **getScene**(): [`Scene`](Scene.md)
+
+Gets the scene of the node
+
+#### Returns
+
+[`Scene`](Scene.md)
+
+a scene
+
+#### Inherited from
+
+[Node](Node.md).[getScene](Node.md#getscene)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:344
+
+___
+
+### getWorldMatrix
+
+▸ **getWorldMatrix**(): [`Matrix`](Matrix.md)
+
+Returns the latest update of the World matrix
+
+#### Returns
+
+[`Matrix`](Matrix.md)
+
+a Matrix
+
+#### Inherited from
+
+[Node](Node.md).[getWorldMatrix](Node.md#getworldmatrix)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:434
+
+___
+
+### instantiateHierarchy
+
+▸ **instantiateHierarchy**(`newParent?`, `options?`, `onNewNodeCreated?`): [`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md)
+
+Instantiate (when possible) or clone that node with its hierarchy
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `newParent` | [`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md) | `null` | defines the new parent to use for the instance (or clone) |
+| `options?` | `Object` | `undefined` | defines options to configure how copy is done |
+| `options.doNotInstantiate` | `boolean` \| (`node`: [`TransformNode`](TransformNode.md)) => `boolean` | `undefined` | defines if the model must be instantiated or just cloned |
+| `onNewNodeCreated?` | (`source`: [`TransformNode`](TransformNode.md), `clone`: [`TransformNode`](TransformNode.md)) => `void` | `undefined` | defines an option callback to call when a clone or an instance is created |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)[`TransformNode`](TransformNode.md)
+
+an instance (or a clone) of the current node with its hierarchy
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:416
+
+___
+
+### isDescendantOf
+
+▸ **isDescendantOf**(`ancestor`): `boolean`
+
+Is this node a descendant of the given node?
+The function will iterate up the hierarchy until the ancestor was found or no more parents defined
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `ancestor` | [`Node`](Node.md) | defines the parent node to inspect |
+
+#### Returns
+
+`boolean`
+
+a boolean indicating if this node is a descendant of the given node
+
+#### Inherited from
+
+[Node](Node.md).[isDescendantOf](Node.md#isdescendantof)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:613
+
+___
+
+### isDisposed
+
+▸ **isDisposed**(): `boolean`
+
+Gets a boolean indicating if the node has been disposed
+
+#### Returns
+
+`boolean`
+
+true if the node was disposed
+
+#### Inherited from
+
+[Node](Node.md).[isDisposed](Node.md#isdisposed)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:192
+
+___
+
+### isEnabled
+
+▸ **isEnabled**(`checkAncestors?`): `boolean`
+
+Is this node enabled?
+If the node has a parent, all ancestors will be checked and false will be returned if any are false (not enabled), otherwise will return true
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `checkAncestors` | `boolean` | `true` | indicates if this method should check the ancestors. The default is to check the ancestors. If set to false, the method will return the value of this node without checking ancestors |
+
+#### Returns
+
+`boolean`
+
+whether this node (and its parent) is enabled
+
+#### Inherited from
+
+[Node](Node.md).[isEnabled](Node.md#isenabled)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:569
+
+___
+
+### isReady
+
+▸ **isReady**(`completeCheck?`): `boolean`
+
+Is this node ready to be used/rendered
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `completeCheck` | `boolean` | `false` | defines if a complete check (including materials and lights) has to be done (false by default) |
+
+#### Returns
+
+`boolean`
+
+true if the node is ready
+
+#### Inherited from
+
+[Node](Node.md).[isReady](Node.md#isready)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:548
+
+___
+
+### isUsingPivotMatrix
+
+▸ **isUsingPivotMatrix**(): `boolean`
+
+return true if a pivot has been set
+
+#### Returns
+
+`boolean`
+
+true if a pivot matrix is used
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:203
+
+___
+
+### locallyTranslate
+
+▸ **locallyTranslate**(`vector3`): [`TransformNode`](TransformNode.md)
+
+Translates the mesh along the passed Vector3 in its local space.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `vector3` | [`Vector3`](Vector3.md) | the distance to translate in localspace |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:554
+
+___
+
+### lookAt
+
+▸ **lookAt**(`targetPoint`, `yawCor?`, `pitchCor?`, `rollCor?`, `space?`): [`TransformNode`](TransformNode.md)
+
+Orients a mesh towards a target point. Mesh must be drawn facing user.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `targetPoint` | [`Vector3`](Vector3.md) | `undefined` | the position (must be in same space as current mesh) to look at |
+| `yawCor` | `number` | `0` | optional yaw (y-axis) correction in radians |
+| `pitchCor` | `number` | `0` | optional pitch (x-axis) correction in radians |
+| `rollCor` | `number` | `0` | optional roll (z-axis) correction in radians |
+| `space` | [`Space`](../enums/Space.md) | `Space.LOCAL` | the chosen space of the target |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:571
+
+___
+
+### markAsDirty
+
+▸ **markAsDirty**(`property?`): [`Node`](Node.md)
+
+Flag the transform node as dirty (Forcing it to update everything)
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `property?` | `string` | if set to "rotation" the objects rotationQuaternion will be set to null |
+
+#### Returns
+
+[`Node`](Node.md)
+
+this  node
+
+#### Overrides
+
+[Node](Node.md).[markAsDirty](Node.md#markasdirty)
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:729
+
+___
+
+### normalizeToUnitCube
+
+▸ **normalizeToUnitCube**(`includeDescendants?`, `ignoreRotation?`, `predicate?`): [`TransformNode`](TransformNode.md)
+
+Uniformly scales the mesh to fit inside of a unit cube (1 X 1 X 1 units)
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `includeDescendants` | `boolean` | `true` | Use the hierarchy's bounding box instead of the mesh's bounding box. Default is false |
+| `ignoreRotation` | `boolean` | `false` | ignore rotation when computing the scale (ie. object will be axis aligned). Default is false |
+| `predicate?` | [`Nullable`](../modules.md#nullable)(`node`: [`AbstractMesh`](AbstractMesh.md)) => `boolean` | `undefined` | predicate that is passed in to getHierarchyBoundingVectors when selecting which object should be included when scaling |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the current mesh
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1462
+
+___
+
+### registerAfterWorldMatrixUpdate
+
+▸ **registerAfterWorldMatrixUpdate**(`func`): [`TransformNode`](TransformNode.md)
+
+If you'd like to be called back after the mesh position, rotation or scaling has been updated.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `func` | (`mesh`: [`TransformNode`](TransformNode.md)) => `void` | callback function to add |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1283
+
+___
+
+### removeBehavior
+
+▸ **removeBehavior**(`behavior`): [`Node`](Node.md)
+
+Remove an attached behavior
+
+**`See`**
+
+https://doc.babylonjs.com/features/behaviour
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `behavior` | [`Behavior`](../interfaces/Behavior.md)[`Node`](Node.md) | defines the behavior to attach |
+
+#### Returns
+
+[`Node`](Node.md)
+
+the current Node
+
+#### Inherited from
+
+[Node](Node.md).[removeBehavior](Node.md#removebehavior)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:393
+
+___
+
+### resetLocalMatrix
+
+▸ **resetLocalMatrix**(`independentOfChildren?`): `void`
+
+Resets this nodeTransform's local matrix to Matrix.Identity().
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `independentOfChildren` | `boolean` | `true` | indicates if all child nodeTransform's world-space transform should be preserved. |
+
+#### Returns
+
+`void`
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1244
+
+___
+
+### rotate
+
+▸ **rotate**(`axis`, `amount`, `space?`): [`TransformNode`](TransformNode.md)
+
+Rotates the mesh around the axis vector for the passed angle (amount) expressed in radians, in the given space.
+space (default LOCAL) can be either Space.LOCAL, either Space.WORLD.
+Note that the property `rotationQuaternion` is then automatically updated and the property `rotation` is set to (0,0,0) and no longer used.
+The passed axis is also normalized.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `axis` | [`Vector3`](Vector3.md) | the axis to rotate around |
+| `amount` | `number` | the amount to rotate in radians |
+| `space?` | [`Space`](../enums/Space.md) | Space to rotate in (Default: local) |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:871
+
+___
+
+### rotateAround
+
+▸ **rotateAround**(`point`, `axis`, `amount`): [`TransformNode`](TransformNode.md)
+
+Rotates the mesh around the axis vector for the passed angle (amount) expressed in radians, in world space.
+Note that the property `rotationQuaternion` is then automatically updated and the property `rotation` is set to (0,0,0) and no longer used.
+The passed axis is also normalized. .
+Method is based on http://www.euclideanspace.com/maths/geometry/affine/aroundPoint/index.htm
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `point` | [`Vector3`](Vector3.md) | the point to rotate around |
+| `axis` | [`Vector3`](Vector3.md) | the axis to rotate around |
+| `amount` | `number` | the amount to rotate in radians |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:903
+
+___
+
+### serialize
+
+▸ **serialize**(`currentSerializationObject?`): `any`
+
+Serializes the objects information.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `currentSerializationObject?` | `any` | defines the object to serialize in |
+
+#### Returns
+
+`any`
+
+the serialized object
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1360
+
+___
+
+### serializeAnimationRanges
+
+▸ **serializeAnimationRanges**(): `any`
+
+Serialize animation ranges into a JSON compatible object
+
+#### Returns
+
+`any`
+
+serialization object
+
+#### Inherited from
+
+[Node](Node.md).[serializeAnimationRanges](Node.md#serializeanimationranges)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:847
+
+___
+
+### setAbsolutePosition
+
+▸ **setAbsolutePosition**(`absolutePosition`): [`TransformNode`](TransformNode.md)
+
+Sets the mesh absolute position in the World from a Vector3 or an Array(3).
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `absolutePosition` | [`Vector3`](Vector3.md) | the absolute position to set |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:494
+
+___
+
+### setDirection
+
+▸ **setDirection**(`localAxis`, `yawCor?`, `pitchCor?`, `rollCor?`): [`TransformNode`](TransformNode.md)
+
+Sets this transform node rotation to the given local axis.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `localAxis` | [`Vector3`](Vector3.md) | `undefined` | the axis in local space |
+| `yawCor` | `number` | `0` | optional yaw (y-axis) correction in radians |
+| `pitchCor` | `number` | `0` | optional pitch (x-axis) correction in radians |
+| `rollCor` | `number` | `0` | optional roll (z-axis) correction in radians |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:645
+
+___
+
+### setEnabled
+
+▸ **setEnabled**(`value`): `void`
+
+Set the enabled state of this node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `value` | `boolean` | defines the new enabled state |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Node](Node.md).[setEnabled](Node.md#setenabled)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:596
+
+___
+
+### setParent
+
+▸ **setParent**(`node`, `preserveScalingSign?`): [`TransformNode`](TransformNode.md)
+
+Defines the passed node as the parent of the current node.
+The node will remain exactly where it is and its position / rotation will be updated accordingly.
+Note that if the mesh has a pivot matrix / point defined it will be applied after the parent was updated.
+In that case the node will not remain in the same space as it is, as the pivot will be applied.
+
+**`See`**
+
+https://doc.babylonjs.com/how_to/parenting
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `node` | [`Nullable`](../modules.md#nullable)[`Node`](Node.md) | `undefined` | the node ot set as the parent |
+| `preserveScalingSign` | `boolean` | `false` | if true, keep scaling sign of child. Otherwise, scaling sign might change. |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:750
+
+___
+
+### setPivotMatrix
+
+▸ **setPivotMatrix**(`matrix`, `postMultiplyPivotMatrix?`): [`TransformNode`](TransformNode.md)
+
+Sets a new pivot matrix to the current node
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `matrix` | [`DeepImmutableObject`](../modules.md#deepimmutableobject)[`Matrix`](Matrix.md) | `undefined` | defines the new pivot matrix to use |
+| `postMultiplyPivotMatrix` | `boolean` | `true` | defines if the pivot matrix must be cancelled in the world matrix. When this parameter is set to true (default), the inverse of the pivot matrix is also applied at the end to cancel the transformation effect |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the current TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:381
+
+___
+
+### setPivotPoint
+
+▸ **setPivotPoint**(`point`, `space?`): [`TransformNode`](TransformNode.md)
+
+Sets a new pivot point to the current node
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `point` | [`Vector3`](Vector3.md) | `undefined` | defines the new pivot point to use |
+| `space` | [`Space`](../enums/Space.md) | `Space.LOCAL` | defines if the point is in world or local space (local by default) |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the current TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:665
+
+___
+
+### setPositionWithLocalVector
+
+▸ **setPositionWithLocalVector**(`vector3`): [`TransformNode`](TransformNode.md)
+
+Sets the mesh position in its local space.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `vector3` | [`Vector3`](Vector3.md) | the position to set in localspace |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:532
+
+___
+
+### setPreTransformMatrix
+
+▸ **setPreTransformMatrix**(`matrix`): [`TransformNode`](TransformNode.md)
+
+Sets a new matrix to apply before all other transformation
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `matrix` | [`Matrix`](Matrix.md) | defines the transform matrix |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the current TransformNode
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:371
+
+___
+
+### translate
+
+▸ **translate**(`axis`, `distance`, `space?`): [`TransformNode`](TransformNode.md)
+
+Translates the mesh along the axis vector for the passed distance in the given space.
+space (default LOCAL) can be either Space.LOCAL, either Space.WORLD.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `axis` | [`Vector3`](Vector3.md) | the axis to translate in |
+| `distance` | `number` | the distance to translate |
+| `space?` | [`Space`](../enums/Space.md) | Space to rotate in (Default: local) |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:945
+
+___
+
+### unfreezeWorldMatrix
+
+▸ **unfreezeWorldMatrix**(): [`TransformNode`](TransformNode.md)
+
+Allows back the World matrix computation.
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:467
+
+___
+
+### unregisterAfterWorldMatrixUpdate
+
+▸ **unregisterAfterWorldMatrixUpdate**(`func`): [`TransformNode`](TransformNode.md)
+
+Removes a registered callback function.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `func` | (`mesh`: [`TransformNode`](TransformNode.md)) => `void` | callback function to remove |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+the TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1293
+
+___
+
+### updatePoseMatrix
+
+▸ **updatePoseMatrix**(`matrix`): [`TransformNode`](TransformNode.md)
+
+Copies the parameter passed Matrix into the mesh Pose matrix.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `matrix` | [`Matrix`](Matrix.md) | the matrix to copy the pose from |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+this TransformNode.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:279
+
+___
+
+### AddNodeConstructor
+
+▸ `Static` **AddNodeConstructor**(`type`, `constructorFunc`): `void`
+
+Add a new node constructor
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | defines the type name of the node to construct |
+| `constructorFunc` | [`NodeConstructor`](../modules.md#nodeconstructor) | defines the constructor function |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Node](Node.md).[AddNodeConstructor](Node.md#addnodeconstructor)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:63
+
+___
+
+### Construct
+
+▸ `Static` **Construct**(`type`, `name`, `scene`, `options?`): [`Nullable`](../modules.md#nullable)() => [`Node`](Node.md)
+
+Returns a node constructor based on type name
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `type` | `string` | defines the type name |
+| `name` | `string` | defines the new node name |
+| `scene` | [`Scene`](Scene.md) | defines the hosting scene |
+| `options?` | `any` | defines optional options to transmit to constructors |
+
+#### Returns
+
+[`Nullable`](../modules.md#nullable)() => [`Node`](Node.md)
+
+the new constructor or null
+
+#### Inherited from
+
+[Node](Node.md).[Construct](Node.md#construct)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:75
+
+___
+
+### Parse
+
+▸ `Static` **Parse**(`parsedTransformNode`, `scene`, `rootUrl`): [`TransformNode`](TransformNode.md)
+
+Returns a new TransformNode object parsed from the source provided.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `parsedTransformNode` | `any` | is the source. |
+| `scene` | [`Scene`](Scene.md) | the scene the object belongs to |
+| `rootUrl` | `string` | is a string, it's the root URL to prefix the `delayLoadingFile` property with |
+
+#### Returns
+
+[`TransformNode`](TransformNode.md)
+
+a new TransformNode object parsed from the source provided.
+
+#### Defined in
+
+packages/dev/core/src/Meshes/transformNode.ts:1385
+
+___
+
+### ParseAnimationRanges
+
+▸ `Static` **ParseAnimationRanges**(`node`, `parsedNode`, `scene`): `void`
+
+Parse animation range data from a serialization object and store them into a given node
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `node` | [`Node`](Node.md) | defines where to store the animation ranges |
+| `parsedNode` | `any` | defines the serialization object to read data from |
+| `scene` | [`Scene`](Scene.md) | defines the hosting scene |
+
+#### Returns
+
+`void`
+
+#### Inherited from
+
+[Node](Node.md).[ParseAnimationRanges](Node.md#parseanimationranges)
+
+#### Defined in
+
+packages/dev/core/src/node.ts:919

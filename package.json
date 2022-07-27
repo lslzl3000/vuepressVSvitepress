@@ -1,0 +1,19 @@
+{
+  "name": "vuepreeevsvitepress",
+  "version": "1.0.0",
+  "description": "vuepress vs vitepress",
+  "main": "index.js",
+  "scripts": {
+    "dev:vuepress": "vuepress dev docs",
+    "dev:vitepress": "vitepress dev docs",
+    "build:vuepress": "NODE_OPTIONS=--max_old_space_size=20480 vuepress build docs",
+    "build:vitepress": "vitepress build docs"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vuepress": "^2.0.0-beta.49",
+    "vitepress": "^1.0.0-alpha.4",
+    "vue": "^3.2.37"
+  }
+}
