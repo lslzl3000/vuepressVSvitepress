@@ -1,6 +1,6 @@
 ## How to Test
 
-Jest build docs(about 1000 .md) by vuepess and vitepress
+Try to build docs(about 1000 .md) by vuepess and vitepress
 
 ```bash
 # first try vuepress
