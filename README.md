@@ -9,6 +9,7 @@ npm run build:vupress
 npm run build:vitepress
 ```
 
-1. You will see how much longer the `Vuepress` will take, in my Macbook Pro 2022 with M2, over `13mins` vs just aournd `60s`
+1. You will see how much longer the `Vuepress` will take, in my Macbook Pro 2022 with M2   
+In my Macbook Pro 2022 with M2,  `VuePress: 13mins+` vs  `VitePress：60-70s`
 2. `Vuepress` also use much much more memory then `Vitepress`   
 It has to build with `NODE_OPTIONS=--max_old_space_size=20480`, otherwise node process will exit by JavaScript heap out of memory 
